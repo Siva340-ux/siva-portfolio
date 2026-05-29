@@ -398,7 +398,7 @@ function Experience() {
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 mb-1">Full Stack Java Intern</h3>
-                    <p className="font-semibold text-blue-600 text-sm">GlowLogics Solutions · Chennai</p>
+                    <p className="font-semibold text-blue-600 text-sm">GlowLogics Solutions · Bangalore</p>
                   </div>
                   <span className="mono text-xs font-medium px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 whitespace-nowrap">
                     Aug 2025 – Nov 2025
