@@ -118,6 +118,21 @@ function Reveal({ children, className, delay = 0, direction = "up" }) {
 function Nav() {
   const [open, setOpen] = useState(false);
   const links = ["About", "Skills", "Experience", "Projects", "Contact"];
+
+  // Helper to handle smooth mobile scrolling and close the menu cleanly
+  const handleMobileClick = (e, link) => {
+    e.preventDefault();
+    setOpen(false);
+    
+    // Wait for the height transition to clear, then scroll perfectly
+    setTimeout(() => {
+      const element = document.getElementById(link.toLowerCase());
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 200);
+  };
+
   return (
     <motion.nav
       initial={{ y: -60, opacity: 0 }}
@@ -128,16 +143,16 @@ function Nav() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-6">
         {/* Logo + Avatar Section */}
-          <div className="flex items-center gap-3">
-         <img
-              src={sivaProfile}
-              alt="Siva profile avatar"
-              className="w-8 h-8 rounded-full object-cover ring-2 ring-blue-100 transition-transform duration-300 group-hover:scale-105"
-        />
-       <span className="text-xl font-extrabold italic tracking-tight lowercase bg-gradient-to-r from-slate-800 via-slate-500 to-slate-800 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] transition-opacity duration-200 group-hover:opacity-80">
-        siva
-      </span>
-      </div>
+        <a href="#about" className="flex items-center gap-3 group select-none">
+          <img
+            src={sivaProfile}
+            alt="Siva profile avatar"
+            className="w-8 h-8 rounded-full object-cover ring-2 ring-blue-100 transition-transform duration-300 group-hover:scale-105"
+          />
+          <span className="text-xl font-extrabold italic tracking-tight lowercase bg-gradient-to-r from-slate-800 via-slate-500 to-slate-800 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] transition-opacity duration-200 group-hover:opacity-80">
+            siva
+          </span>
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
@@ -162,7 +177,7 @@ function Nav() {
         </div>
 
         {/* Mobile Hamburger */}
-        <button className="md:hidden p-1" onClick={() => setOpen(!open)}>
+        <button className="md:hidden p-1 text-slate-800 z-50" onClick={() => setOpen(!open)}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
@@ -171,24 +186,35 @@ function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+            initial={{ height: 0, opacity: 0 }} 
+            animate={{ height: "auto", opacity: 1 }} 
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white border-t border-slate-100"
+            className="md:hidden overflow-hidden bg-white border-t border-slate-100 shadow-xl"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-5 flex flex-col gap-5">
               {links.map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm font-medium text-slate-700" onClick={() => setOpen(false)}>
+                <a 
+                  key={l} 
+                  href={`#${l.toLowerCase()}`} 
+                  className="text-base font-semibold text-slate-700 active:text-blue-600 py-1"
+                  onClick={(e) => handleMobileClick(e, l)}
+                >
                   {l}
                 </a>
               ))}
-             <a 
-                href="/siva-m-resume.pdf"
-                download="Siva_M_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold mt-2 text-slate-700 hover:text-blue-600 transition-colors">
-                <Download size={14} /> Download CV
+              <div className="border-t border-slate-100 pt-3 mt-1">
+                <a 
+                  href="/siva-m-resume.pdf"
+                  download="Siva_M_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-slate-800 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200"
+                  onClick={() => setOpen(false)}
+                >
+                  <Download size={14} /> Download CV
                 </a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -196,7 +222,6 @@ function Nav() {
     </motion.nav>
   );
 }
-
 /* ════════════════════════════════════════════
    HERO
 ════════════════════════════════════════════ */
