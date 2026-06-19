@@ -6,11 +6,13 @@ import {
   ChevronDown, MapPin, Cpu, Database, Wrench, Code2, Layers,
   ArrowRight, Zap, Shield, Globe, Menu, X
 } from "lucide-react";
-import sivaProfile from "./assets/siva.JPG";
+import sivaProfile from "./assets/sivaprofile.jpeg";
 import capitalFinder from "./assets/capitalfinder.png";
 import realTicker from "./assets/realticker.jpeg";
 import fashionStore from "./assets/fashionstore.jpeg";
 import cureConnect from "./assets/cureconnect.jpeg";
+import omniMind from "./assets/omnimind.png";
+
 
 /* ─── Google Fonts ─── */
 const fontLink = document.createElement("link");
@@ -166,7 +168,7 @@ function Nav() {
         {/* CV Button */}
         <div className="hidden md:block">
           <a
-            href="/siva-m-resume.pdf"
+            href="/siva-resume-swe.pdf"
             download="Siva_M_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -291,7 +293,7 @@ function Hero() {
           >
             {[
               { val: "8.0", label: "CGPA" },
-              { val: "4+", label: "Projects" },
+              { val: "5+", label: "Projects" },
               { val: "4mo", label: "Internship" },
             ].map(s => (
               <div key={s.label} className="flex flex-col">
@@ -312,15 +314,15 @@ function Hero() {
 const skillGroups = [
   {
     icon: <Code2 size={18} />, label: "Languages", color: "blue",
-    skills: ["Java", "JavaScript", "HTML", "CSS"]
+    skills: ["Java", "JavaScript", "HTML", "CSS", "SQL"]
   },
   {
-    icon: <Layers size={18} />, label: "Frameworks", color: "violet",
-    skills: ["Spring Boot", "Spring Data JPA", "React.js", "Context API", "FastAPI"]
+    icon: <Layers size={18} />, label: "Frameworks & AI", color: "violet",
+    skills: ["Spring Boot", "Spring Data JPA", "Spring AI", "React.js", "FastAPI"]
   },
   {
-    icon: <Database size={18} />, label: "Databases & Caching", color: "emerald",
-    skills: ["MySQL", "Caffeine Cache", "SQL"]
+    icon: <Database size={18} />, label: "Databases & AI Platforms", color: "emerald",
+    skills: ["MySQL", "H2 Database","Caffeine Cache", "Ollama", "Google Cloud (GCP)"]
   },
   {
     icon: <Wrench size={18} />, label: "Tools & DevOps", color: "orange",
@@ -434,6 +436,21 @@ function Experience() {
 ════════════════════════════════════════════ */
 const projects = [
   {
+    id: "omnimind",
+    title: "OmniMind AI",
+    sub: "Document Intelligence Sandbox",
+    highlight: "Optimized API latency by 30%+ via Caffeine caching and engineered persistent MySQL RAG architecture.",
+    desc: "End-to-end Retrieval-Augmented Generation (RAG) system using Spring AI, Ollama, and React for deep semantic search across large-scale PDF documentation.",
+    stack: ["React.js", "Spring Boot", "Spring AI", "Ollama", "MySQL", "Caffeine Cache"],
+    badge: <><Cpu size={12} /> RAG Engine</>,
+    badgeColor: "bg-indigo-100 text-indigo-700",
+    github: "https://github.com/Siva340-ux/OmniMind-AI.git",
+    live: null,
+    hasLive: false,
+    // TODO: Replace with local assets folder reference later: src/assets/project-omnimind.jpg
+    img: omniMind,
+  },
+  {
     id: "realticker",
     title: "RealTicker",
     sub: "AI-Powered Stock Insights",
@@ -446,7 +463,7 @@ const projects = [
     live: "https://realticker-frontend.onrender.com",
     hasLive: true,
     // TODO: Replace with local assets folder reference later: src/assets/project-realticker.jpg
-    img:realTicker,
+    img: realTicker,
   },
   {
     id: "capitalfinder",
@@ -461,7 +478,7 @@ const projects = [
     live: "https://example.com",
     hasLive: true,
     // TODO: Replace with local assets folder reference later: src/assets/project-capitalfinder.jpg
-    img:capitalFinder,
+    img: capitalFinder,
   },
   {
     id: "fashionstore",
@@ -491,7 +508,7 @@ const projects = [
     live: null,
     hasLive: false,
     // TODO: Replace with local assets folder reference later: src/assets/project-cureconnect.jpg
-    img:cureConnect,
+    img: cureConnect,
   },
 ];
 
