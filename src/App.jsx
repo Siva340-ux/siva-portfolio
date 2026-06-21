@@ -207,7 +207,7 @@ function Nav() {
               ))}
               <div className="border-t border-slate-100 pt-3 mt-1">
                 <a 
-                  href="/siva-m-resume.pdf"
+                  href="/siva-resume-swe.pdf"
                   download="Siva_M_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -322,7 +322,7 @@ const skillGroups = [
   },
   {
     icon: <Database size={18} />, label: "Databases & AI Platforms", color: "emerald",
-    skills: ["MySQL", "H2 Database","Caffeine Cache", "Ollama", "Google Cloud (GCP)"]
+    skills: ["MySQL", "H2 Database","Caffeine Cache", "Ollama", "Google Cloud (GCP)","Vertex Ai"]
   },
   {
     icon: <Wrench size={18} />, label: "Tools & DevOps", color: "orange",
